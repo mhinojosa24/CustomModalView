@@ -10,6 +10,7 @@ import UIKit
 class CardViewController: UIViewController {
 
     
+    @IBOutlet weak var barHandleContainerView: UIView!
     @IBOutlet weak var barView: UIView!
     
     override func viewDidLoad() {
