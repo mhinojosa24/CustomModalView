@@ -44,7 +44,7 @@ struct Provider: TimelineProvider {
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
+            let entryDate = Calendar.current.date(byAdding: .minute, value: hourOffset, to: currentDate)!
             let entry = SimpleEntry(date: entryDate, myString: MyDateProvider.getRandomString())
             entries.append(entry)
         }
@@ -63,13 +63,16 @@ struct TestWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        ZStack {
-            Color.black.edgesIgnoringSafeArea(.all)
+        VStack(alignment: .leading, spacing: 10, content: {
+            Text("cobble")
+                .foregroundColor(Color.init(#colorLiteral(red: 0.9455459714, green: 0.795925796, blue: 0.04932839423, alpha: 1)))
+                .fontWeight(.medium)
+                .font(.system(size: 14))
+            
             Text(entry.myString)
-                .foregroundColor(.orange)
-                .fontWeight(.light)
-                .multilineTextAlignment(.center)
-        }
+                .foregroundColor(.black)
+                .fontWeight(.regular)
+        }).foregroundColor(Color(#colorLiteral(red: 0.9179172552, green: 0.9270055448, blue: 0.9270055448, alpha: 1)))
     }
 }
 
